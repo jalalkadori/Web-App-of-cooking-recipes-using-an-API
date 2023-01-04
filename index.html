@@ -4,62 +4,198 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   </head>
   <body>
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg bg-info">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a href="#" class="navbar-brand h1">Logo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collaps navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto h6">
+            <li class="nav-item">
+              <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Discover</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Showcase -->
+    <div class="container bg-warning mt-3 p-2 rounded">
+      <div class="row">
+        <div class="col text-center mt-5">
+          <h1>Fresh & tasty food</h1>
+          <p>Lorem ipsum dolor sit amet consectetur
+           <br> adipisicing elit. Eaque, accusantium.</p>
+          <button class="btn btn-danger">Discover More</button>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <img src="./images/burger.png" width="150px">
+        </div>
+      </div>
+    </div>
+    <!-- Search bar  -->
+    <div class="container bg-success p-5 mt-3 rounded">
+      <div class="row">
+        <div class="col-sm-6">
+          <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aliquam.</h6>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" 
+            placeholder="Enter Receip name .." aria-label="Example text with button addon" 
+            aria-describedby="button-addon1">
+            <button class="btn btn-danger" type="button" id="button-addon1">Search</button>
           </div>
         </div>
-    </nav>
-    <!-- Slider -->
-    <div class="container">
-        <div id="carouselExampleIndicators" class="carousel slide">
-            <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+    </div>
+    <!-- Famous receips section  -->
+    <div class="container mt-5 text-dark">
+      <h1 class="text-center mb-5">Today's selection</h1>
+      <div class="row row-cols-sm-1 row-cols-md-2
+       row-cols-lg-3 g-5">
+        <div class="col">
+          <div class="card">
+            <img src="./images/plat1.png" class="card-img-top">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-danger">Go somewhere</a>
             </div>
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="...">
-            </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-            </button>
+          </div>
         </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/plat1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-danger">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/plat1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-danger">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/plat1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-danger">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/plat1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-danger">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="./images/plat1.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-danger">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
 
+    <!-- Newslettr -->
+    <div class="container bg-primary p-5 mt-5 rounded">
+      <div class="row">
+        <div class="col-sm-6">
+          <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, aliquam.</h6>
+        </div>
+        <div class="col-sm-6">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" 
+            placeholder="Enter your email adress" aria-label="Example text with button addon" 
+            aria-describedby="button-addon1">
+            <button class="btn btn-danger" type="button" id="button-addon1">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- footer -->
+    <div class="container-fluid mt-5 p-5 bg-dark">
+      <div class="row row-cols-sm-1
+      row-cols-md-2 row-cols-lg-3 text-light">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-danger">
+              <i class="bi bi-facebook"></i>
+              "Facebook"
+            </button>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Discover</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="./index.html" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Discover</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+   
+ 
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" 
+    crossorigin="anonymous">
+    </script>
   </body>
 </html>
