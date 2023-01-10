@@ -21,35 +21,18 @@ fetch(mealsByName)
           </div>
         </div>`
     }
-    
     searchArea.innerHTML = displyedItems;
 });
-
-
+//   This will make a GET request to the JSON file, get the data in JSON format, and then use the getRandomElements function to select 6 random objects from the data array. 
 function getRandomElements(array, randomeItems) {
    let arrCopy = array;
    let randomArr = [];
-
    for (let i=0; i < randomeItems; i++) {
-        let index = math.floor(math.random() * arrCopy.length);
-        randomArr.push(arrCopy[index]);
-        arrCopy.splice(index, 1)
+      let index = Math.floor(Math.random() * arrCopy.length);
+      randomArr.push(arrCopy[index]);
+      arrCopy.splice(index, 1);
    }
    return randomArr;
    console.log(randomArr)
-
 }
-//   This will make a GET request to the JSON file, get the data in JSON format, and then use the getRandomElements function to select 6 random objects from the data array. You can then do something with the random objects, like displaying them on the page.
-  
-  
-  
-  
-// const copy = array;
-// const result = [];
-// for (let i = 0; i < count; i++) {
-//   const index = Math.floor(Math.random() * copy.length);
-//   result.push(copy[index]);
-//   copy.splice(index, 1); 
-//   console.log(copy)
-// }
-// return result;
+
