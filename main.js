@@ -16,8 +16,9 @@ fetch(mealsByName)
             <div class="card-body">
               <h5 class="card-title">${randomArr[i].strMeal}</h5>
               <p class="card-text">${randomArr[i].strArea}</p>
-              <a href="#" class="btn btn-danger data-bs-toggle="modal"
-               data-bs-target="#exampleModal">Show Ingredient</a>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Show Ingredients
+              </button>
             </div>
           </div>
         </div>`
