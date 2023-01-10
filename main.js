@@ -3,28 +3,29 @@ fetch(mealsByName)
 .then((result) => result.json()).then((data) => {
     let searchArea = document.getElementById('searchArea');
     let arrData = data.meals;
-    let randomObjects = getRandomElements(arrData, 8);
+    let randomArr = getRandomArr(arrData, 8);
 
-    console.log(randomObjects);
+    console.log(randomArr);
 
     let displyedItems = "";
-    for (let i=0; i < randomObjects.length; i++) {
+    for (let i=0; i < randomArr.length; i++) {
         displyedItems += 
         `<div class="col-10 col-sm-6 col-md-4 col-lg-3">
           <div class="card">
-            <img src="${randomObjects[i].strMealThumb}" alt="image">
+            <img src="${randomArr[i].strMealThumb}" alt="image">
             <div class="card-body">
-              <h5 class="card-title">${randomObjects[i].strMeal}</h5>
-              <p class="card-text">${randomObjects[i].strArea}</p>
-              <a href="#" class="btn btn-danger">Show Ingredient</a>
+              <h5 class="card-title">${randomArr[i].strMeal}</h5>
+              <p class="card-text">${randomArr[i].strArea}</p>
+              <a href="#" class="btn btn-danger data-bs-toggle="modal"
+               data-bs-target="#exampleModal">Show Ingredient</a>
             </div>
           </div>
         </div>`
     }
     searchArea.innerHTML = displyedItems;
 });
-//   This will make a GET request to the JSON file, get the data in JSON format, and then use the getRandomElements function to select 6 random objects from the data array. 
-function getRandomElements(array, randomeItems) {
+// This function is used to select 6 random objects from the data array. 
+function getRandomArr(array, randomeItems) {
    let arrCopy = array;
    let randomArr = [];
    for (let i=0; i < randomeItems; i++) {
@@ -33,6 +34,5 @@ function getRandomElements(array, randomeItems) {
       arrCopy.splice(index, 1);
    }
    return randomArr;
-   console.log(randomArr)
 }
 
