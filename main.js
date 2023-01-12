@@ -1,4 +1,4 @@
-const mealsByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+ const mealsByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 fetch(mealsByName)
 .then((result) => result.json()).then((data) => {
     let searchArea = document.getElementById('searchArea');
@@ -38,10 +38,11 @@ function getRandomArr(array, randomeItemsCount) {
 
 function getChildIndex(x) {
   var searchArea = document.getElementById("searchArea");
+  var ModalBody = document.getElementById("searchArea");
   var childrens = searchArea.children;
   var selectedChild = x.parentNode.parentNode.parentNode;
-  var index = Array.from(childrens).findIndex(function(child){ return child === selectedChild});
-  console.log(index);
+  var i = Array.from(childrens).findIndex(function(child){ return child === selectedChild});
+  
 }
 
 function DisplayOnModal() {
