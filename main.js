@@ -1,6 +1,7 @@
 const mealsByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 var randomList=[];
 var mealsList = [];
+var item;
 fetch(mealsByName)
 .then((result) => result.json()).then((data) => {
     let arrData = data.meals;
@@ -8,7 +9,7 @@ fetch(mealsByName)
     randomList = randomArr;
     mealsList = arrData;
     // Displying random objects from the main array
-    searchArea.innerHTML = cardsDisplay(randomArr);
+    searchArea.innerHTML = randomCardsDisplay(randomArr);
     console.log(arrData);
     console.log(randomArr);
 });
@@ -24,7 +25,7 @@ function getRandomArr(array, randomeItemsCount) {
    return randomArr;
 }
 //this function is used to display data frome an array as bootstrap cards
-function cardsDisplay(array) {
+function randomCardsDisplay(array) {
   let displyedItems = "";
     for (let i=0; i < array.length; i++) {
         displyedItems += 
@@ -42,14 +43,6 @@ function cardsDisplay(array) {
         </div>`
     }
     return displyedItems;
-}
-function search(){
-    var userInput = document.getElementById('input').value;
-    var filteredData = mealsList.filter(item => item.strMeal.toUpperCase() === userInput.toUpperCase());
-    console.log(filteredData);
-    searchArea.innerHTML = cardsDisplay(filteredData); // caliing the display function
-    userInput = '';
-
 }
 // on click on the wanted meal this function launch a modal window that shows the meal's infoemations
 function displaySelectedMeal(element) {
@@ -75,7 +68,57 @@ function displaySelectedMeal(element) {
       <p class="card-text">${selectedChild.strInstructions}</p>
     </div>
     </div>  
+  `
+}
+// search and display functions 
+function search(){
+  var userInput = document.getElementById('input').value;
+  var filteredData = mealsList.filter(item => item.strMeal.toUpperCase() === userInput.toUpperCase());
+  var title = document.getElementById("searchAreaTitle");
+  
+  let itemFound = "";
+    for (let i=0; i < filteredData.length; i++) {
+     item=filteredData[i];
+      itemFound += 
+        `<div class="col-10 col-sm-6 col-md-4 col-lg-3">
+          <div class="card">
+            <img src="${filteredData[i].strMealThumb}" alt="image">
+            <div class="card-body">
+              <h5 class="card-title">${filteredData[i].strMeal}</h5>
+              <p class="card-text">${filteredData[i].strArea}</p>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" onclick="displayOnModal()"
+               data-bs-target="#exampleModal">
+               Show Ingredients</button>
+            </div>
+          </div>
+        </div>`
+    }
+    title.innerHTML = `Search results for ${userInput}`
+    searchArea.innerHTML = itemFound;
+    userInput = '';
+}
+
+function displayOnModal() {
+  var ModalBody = document.getElementById("ModalBody");
+  
+  ModalBody.innerHTML = 
     `
+    <div class="card">
+    <img src="${item.strMealThumb}" class="card-img-top">
+    <div class="card-body">
+      <h4 class="card-title">Meal Name : ${item.strMeal}</h5>
+      <h5 class="card-title">Region : ${item.strArea}</h5>
+      <h5 class="card-title">Category : ${item.strCategory}</h5>
+      <h5 class="card-title">Ingredients : </h5>
+      <p "card-text">${item.strIngredient1}, ${item.strIngredient2}, 
+      ${item.strIngredient3}, ${item.strIngredient4}, ${item.strIngredient5},
+      ${item.strIngredient6}, ${item.strIngredient7}, ${item.strIngredient8},
+      </p>
+      <h5 class="card-title">Preparation Instructions :</h5>
+      <p class="card-text">${item.strInstructions}</p>
+    </div>
+    </div>  
+ `
 }
 
 
