@@ -2,6 +2,7 @@ const mealsByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 var randomList=[];
 var mealsList = [];
 var item;
+var searchArea = document.getElementById('searchArea')
 fetch(mealsByName)
 .then((result) => result.json()).then((data) => {
     let arrData = data.meals;
@@ -37,7 +38,7 @@ function randomCardsDisplay(array) {
               <p class="card-text">${array[i].strArea}</p>
               <button type="button" class="btn btn-danger" data-bs-toggle="modal" onclick="displaySelectedMeal(this)"
                data-bs-target="#exampleModal">
-               Show Ingredients</button>
+               Show More Infos</button>
             </div>
           </div>
         </div>`
@@ -59,7 +60,7 @@ function displaySelectedMeal(element) {
       <h4 class="card-title">Meal Name : ${selectedChild.strMeal}</h5>
       <h5 class="card-title">Region : ${selectedChild.strArea}</h5>
       <h5 class="card-title">Category : ${selectedChild.strCategory}</h5>
-      <h5 class="card-title">Ingredients : </h5>
+      <h5 class="card-title">More Infos : </h5>
       <p "card-text">${selectedChild.strIngredient1}, ${selectedChild.strIngredient2}, 
       ${selectedChild.strIngredient3}, ${selectedChild.strIngredient4}, ${selectedChild.strIngredient5},
       ${selectedChild.strIngredient6}, ${selectedChild.strIngredient7}, ${selectedChild.strIngredient8},
@@ -75,8 +76,9 @@ function search(){
   var userInput = document.getElementById('input').value;
   var filteredData = mealsList.filter(item => item.strMeal.toUpperCase() === userInput.toUpperCase());
   var title = document.getElementById("searchAreaTitle");
-  
-  let itemFound = "";
+  console.log(filteredData)
+  if(filteredData != "") {
+    let itemFound = "";
     for (let i=0; i < filteredData.length; i++) {
      item=filteredData[i];
       itemFound += 
@@ -88,14 +90,18 @@ function search(){
               <p class="card-text">${filteredData[i].strArea}</p>
               <button type="button" class="btn btn-danger" data-bs-toggle="modal" onclick="displayOnModal()"
                data-bs-target="#exampleModal">
-               Show Ingredients</button>
+               Show More Infos</button>
             </div>
           </div>
         </div>`
     }
     title.innerHTML = `Search results for ${userInput}`
     searchArea.innerHTML = itemFound;
-    userInput = '';
+  } else {
+    title.innerHTML = `No result found for ${userInput}`
+    searchArea.innerHTML = "";
+  }
+  userInput = "";
 }
 
 function displayOnModal() {
