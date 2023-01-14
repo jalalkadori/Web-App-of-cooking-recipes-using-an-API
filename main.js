@@ -80,7 +80,7 @@ function search(){
   if(filteredData != "") {
     let itemFound = "";
     for (let i=0; i < filteredData.length; i++) {
-     item=filteredData[i];
+     item = filteredData[i];
       itemFound += 
         `<div class="col-10 col-sm-6 col-md-4 col-lg-3">
           <div class="card">
@@ -106,7 +106,6 @@ function search(){
 
 function displayOnModal() {
   var ModalBody = document.getElementById("ModalBody");
-  
   ModalBody.innerHTML = 
     `
     <div class="card">
