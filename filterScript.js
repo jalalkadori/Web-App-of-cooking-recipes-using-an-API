@@ -42,14 +42,12 @@ function displayOnCards() {
   searchArea.innerHTML = itemFound;
 }
 
-
 function displaySelectedMeal(element) {
   var ModalBody = document.getElementById("ModalBody");
   var childrens = searchArea.children;
   var childClicked = element.parentNode.parentNode.parentNode;
   var selectedChildIndex = Array.from(childrens).findIndex(function(child){ return child === childClicked});
   var selectedChild = arrayListHolder[selectedChildIndex];
-
   ModalBody.innerHTML = 
     `
     <div class="card">
