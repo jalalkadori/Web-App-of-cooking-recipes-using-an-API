@@ -1,12 +1,47 @@
 const mealsByName = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+const CategoryListUrl = "https://www.themealdb.com/api/json/v1/1/categories.php";
+const CountryList = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Canadian";
+
 var mealsList = [];
+var CategoryList = [];
 var arrayListHolder;
 var searchArea = document.getElementById('searchArea');
-fetch(mealsByName)
+fetch(mealsByName)  
 .then((result) => result.json()).then((data) => {
     let arrData = data.meals;
     mealsList = arrData;
+    console.log(mealsList);
 });
+
+// Creation des input select
+fetch(CategoryListUrl)
+.then((result) => result.json()).then((data) => {
+  CategoryList = data.categories;
+  console.log(CategoryList);
+});
+function OptionCreation() {
+  var categoryOption = document.getElementById('categoryFilter');
+  var categoryListHolder = "";
+  for(let i = 0; i < CategoryList.length; i++) {
+    categoryListHolder += `<option value="${CategoryList[i].strCategory}">${CategoryList[i].strCategory}</option>`
+  }
+  categoryOption.innerHTML = categoryListHolder;
+
+  var CountryOption = document.getElementById('areaFilter');
+  var contryListHolder = "";
+  for(let i = 0; i < CategoryList.length; i++) {
+    categoryListHolder += `<option value="${CategoryList[i].strCategory}">${CategoryList[i].strCategory}</option>`
+  }
+  categoryOption.innerHTML = categoryListHolder;
+}
+OptionCreation();
+
+
+
+
+
+
+
 function categoryFilter() {
     var categoryFilter = document.getElementById("categoryFilter").value;
     // getting an array with all the elements that matches the selected value
