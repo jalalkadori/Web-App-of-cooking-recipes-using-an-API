@@ -98,7 +98,14 @@ function search(){
     title.innerHTML = `Search results for ${userInput}`
     searchArea.innerHTML = itemFound;
   } else {
-    title.innerHTML = `No result found for ${userInput}`
+    title.innerHTML = 
+    `<div class="card text-bg-dark">
+       <h5 class="card-title">404</h5>
+       <p class="card-text">No result found for ${userInput}.</p>
+        <img src="./images/404.jpg" class="card-img" alt="...">
+        <div class="card-img-overlay"></div>
+    </div>`;
+
     searchArea.innerHTML = "";
   }
   userInput = "";
