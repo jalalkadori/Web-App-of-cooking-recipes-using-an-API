@@ -7,54 +7,48 @@ var CategoryList = [];
 var CountryList = [];
 var arrayListHolder;
 var searchArea = document.getElementById('searchArea');
-fetch(mealsByName)  
-.then((result) => result.json()).then((data) => {
+var categoryOption = document.getElementById("categoryFilter");
+var countryOption = document.getElementById("areaFilter");
+var areaOptions = countryOption.options;
+var categoryOptions = categoryOption.options;
+
+fetch(mealsByName).then((result) => result.json()).then((data) => {
     let arrData = data.meals;
     mealsList = arrData;
     console.log(mealsList);
 });
 
 // Creation des input select :
-fetch(CategoryListUrl)
-.then((result) => result.json()).then((data) => {
+fetch(CategoryListUrl).then((result) => result.json()).then((data) => {
   CategoryList = data.categories;
-});
-
-fetch(CountryListUrl)
-.then((result) => result.json()).then((data) => {
-  CountryList = data.meals;
-});
-
-function ListCreation() {
   var categoryOption = document.getElementById("categoryFilter");
-  var countryOption = document.getElementById("areaFilter");
-  console.log(CategoryList);
+
   // category list creation :
   var categoryListHolder = `<option></option>`;
   for(let i = 0; i < CategoryList.length; i++) {
     categoryListHolder += `<option value="${CategoryList[i].strCategory}">${CategoryList[i].strCategory}</option>`;
   }
   categoryOption.innerHTML = categoryListHolder;
-  // Area list creation :
-  console.log(CountryList);
+
+  getSelectedValue(categoryOptions, "Lamb"); // setting the selected category to Moroccan
+});
+
+fetch(CountryListUrl).then((result) => result.json()).then((data) => {
+  CountryList = data.meals;
+  var countryOption = document.getElementById("areaFilter");
   var areaListHolder = `<option></option>`;
   for(let i = 0; i < CountryList.length; i++) {
     areaListHolder += `<option value="${CountryList[i].strArea}">${CountryList[i].strArea}</option>`;
   }
   countryOption.innerHTML = areaListHolder;
-
-  var areaOptions = countryOption.options;
-  var categoryOptions = categoryOption.options;
-  
-  getSelectedValue(areaOptions, "Moroccan"); // setting the selected area to Moroccan
-  getSelectedValue(categoryOptions, "Lamb"); // setting the selected category to Moroccan
-}
+  console.log(CountryList);
+  getSelectedValue(areaOptions, "Moroccan"); 
+});
 
 function getSelectedValue(options, value) {
   for (var i = 0; i < options.length; i++) {
     if (options[i].value == value) {
-      // Set the selected option
-      options[i].selected = true;
+      options[i].selected = true; // Set the selected option
       break;
     }
   }
@@ -65,13 +59,9 @@ function Filter() {
     var categoryFilter = document.getElementById("categoryFilter").value;
     // getting an array with all the elements that matches the selected values
     let mealsListFiltered = mealsList.filter((element) => {
-      if(areaFilter == "") {
-        return element.strCategory === categoryFilter;
-      } else if (categoryFilter == "") {
-        return element.strArea === areaFilter;
-      } else {
-        return (element.strCategory === categoryFilter) && (element.strArea === areaFilter);
-      }
+      if(areaFilter == "") {return element.strCategory === categoryFilter;} 
+      else if (categoryFilter == "") {return element.strArea === areaFilter;} 
+      else {return (element.strCategory === categoryFilter) && (element.strArea === areaFilter);}
     });
     if(mealsListFiltered != "") {
       arrayListHolder = mealsListFiltered;
